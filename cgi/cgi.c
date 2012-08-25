@@ -31,7 +31,9 @@
 #include "html.h"
 #include "cs/cs.h"
 
-
+#ifdef WIN32
+# define sleep _sleep
+#endif
 struct _cgi_vars
 {
   char *env_name;

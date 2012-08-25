@@ -6514,7 +6514,7 @@ echo $ECHO_N "checking for python includes... $ECHO_C" >&6
   python_inc=no
   python_lib=no
   python_search_path="/neo/opt /usr/local /usr /c"
-  python_versions="2.4 2.3 2.2 2.1 2.0 1.5 24 23 22 21 20 15"
+  python_versions="2.5 2.4 2.3 2.2 2.1 2.0 1.5 24 23 22 21 20 15"
   if test $cs_cv_python_path != "no" -a -x $cs_cv_python_path; then
     python_bin=$cs_cv_python_path
     vers=`$python_bin -c "import sys; print sys.version[:3]"`
@@ -6535,7 +6535,7 @@ echo $ECHO_N "checking for python includes... $ECHO_C" >&6
 	  fi
 	  if test -d $python_base; then
 	      python_lib="-L$python_base/config -lpython$vers"
-	      python_site=$python_base/site-packages
+	      python_site=$python_base
 	  fi
 	fi
 	if test -f $path/include/python$vers/Python.h; then

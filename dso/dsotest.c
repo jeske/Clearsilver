@@ -14,4 +14,9 @@ int main() {
    }
 
    printf("success: 0x%X\n", hdf);
+
+
+   hdf_set_value(hdf,"a.b.c","somevalue");
+   printf("get_value returned: %s", hdf_get_value(hdf,"a.b.c","default"));
+
 }

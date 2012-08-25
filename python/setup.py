@@ -100,7 +100,7 @@ LDSHARED = os.environ.get('LDSHARED', expand_var(CC, make_vars))
 
 # HACK!  The setup/Makefile may not have the hermetic/cross-compiler entries
 # for the compiler that we need, so override them here!
-given_cc = sysconfig.get_config_var('CC')
+"""given_cc = sysconfig.get_config_var('CC')
 if given_cc != CC and given_cc[0] != '/':
   sys.stderr.write("Overriding setup's CC from %s to %s\n" % (given_cc, CC))
   try:
@@ -108,7 +108,7 @@ if given_cc != CC and given_cc[0] != '/':
     sysconfig._config_vars['LDSHARED'] = LDSHARED
   except AttributeError:
     pass
-
+"""
 setup_args = {
     'name': "clearsilver",
     'version': VERSION,

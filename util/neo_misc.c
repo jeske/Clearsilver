@@ -22,6 +22,14 @@
 #include "neo_misc.h"
 #include "neo_err.h"
 
+void *neo_malloc(size_t length) {
+  return malloc(length);
+}
+
+void neo_free(void *buf) {
+  free(buf);
+}
+
 void ne_vwarn (const char *fmt, va_list ap)
 {
   char tbuf[20];

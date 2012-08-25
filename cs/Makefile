@@ -18,6 +18,8 @@ CSR_EXE = cs
 CSR_SRC = cs.c
 CSR_OBJ = $(CSR_SRC:%.c=%.o)
 
+DIFF_OPTS = "--strip-trailing-cr"
+
 CSDUMP_EXE = csdump
 CSDUMP_SRC = csdump.c
 CSDUMP_OBJ = $(CSDUMP_SRC:%.c=%.o)
@@ -66,7 +68,7 @@ test: $(CSTEST_EXE) $(CS_TESTS)
 	for test in $(CS_TESTS); do \
 		rm -f $$test.out; \
 		./cstest test.hdf $$test > $$test.out 2>&1; \
-		diff $$test.out $$test.gold 2>&1 > /dev/null; \
+		diff $(DIFF_OPTS) $$test.out $$test.gold 2>&1 > /dev/null; \
 		return_code=$$?; \
 		if [ $$return_code -ne 0 ]; then \
 		  diff $$test.gold $$test.out > $$test.err; \
@@ -77,7 +79,7 @@ test: $(CSTEST_EXE) $(CS_TESTS)
 	done; \
 	rm -f test_tag.cs.out; \
 	./cstest test_tag.hdf test_tag.cs> test_tag.cs.out 2>&1; \
-	diff test_tag.cs.out test_tag.cs.gold; \
+	diff $(DIFF_OPTS) test_tag.cs.out test_tag.cs.gold; \
 	return_code=$$?; \
 	if [ $$return_code -ne 0 ]; then \
 	  echo "Failed Regression Test: test_tag.cs"; \
